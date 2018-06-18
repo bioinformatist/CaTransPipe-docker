@@ -29,6 +29,9 @@ RUN aria2c https://github.com/alexdobin/STAR/raw/master/bin/Linux_x86_64_static/
 	chmod 777 /opt/STAR && \
 	ln -s /opt/STAR /usr/local/bin
 
+# Use bash instead for shopt only works with bash
+SHELL ["/bin/bash", "-c"]
+
 # Install FastQC
 RUN aria2c https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.7.zip -q -o /opt/fastqc_v0.11.7.zip && \
 	unzip -qq /opt/fastqc_v0.11.7.zip -d /opt/ && \
@@ -38,6 +41,9 @@ RUN aria2c https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.1
 	rm -rfv !\("fastqc"\|*.jar\) && \
 	chmod 777 * && \
 	ln -s /opt/FastQC/fastqc /usr/local/bin/
+
+# Set back to default shell
+SHELL ["/bin/sh", "-c"]
 
 # Install RSeQC
 RUN aria2c https://sourceforge.net/projects/rseqc/files/RSeQC-2.3.7.tar.gz/download -q -o /opt/RSeQC-2.3.7.tar.gz && \
