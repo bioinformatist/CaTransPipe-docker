@@ -12,6 +12,7 @@ LABEL authors="zhaoqi@sysucc.org.cn,sun_yu@mail.nankai.edu.cn" \
 # make is for executing makefiles for several tools
 # Cython provides C header files like Python.h for CPAT compiling
 # DO NOT use pip for installing Cython, which will cause missing .h files
+# libudunits2-dev is for installing R package units
 # liblzo2-dev is for compiling during RSeQC installation
 # zlib1g-dev is for CPAT compiling dependency
 # libncurses5-dev for samtools (may be used later)
@@ -34,6 +35,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 	make \
 	python-dev \
 	cython \
+	libudunits2-dev \
 	liblzo2-dev \
 	zlib1g-dev \
 	libssl-dev \
