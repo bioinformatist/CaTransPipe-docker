@@ -152,7 +152,9 @@ RUN aria2c http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2
 RUN echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; options(repos = r);" > ~/.Rprofile
 
 # Install R packages from CRAN
-RUN Rscript -e "install.packages('optparse')" \
+# Shiny is for htmlwidgets
+RUN Rscript -e "install.packages('shiny')" \
+			-e "install.packages('optparse')" \
 			-e "install.packages('getopt')" \
 			-e "install.packages('ggplot2')" \
 			-e "install.packages('pheatmap')" \
